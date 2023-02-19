@@ -5,14 +5,17 @@ class Solution {
 public:
     int firstBadVersion(int n) {
         int s=1,cur=n>>1;
-        while(s<n)
+        while(1)
         {
-            if(isBadVersion(cur))
-                n=cur-1;
-            else
+            if(!isBadVersion(cur))
+            {
+                if(isBadVersion(cur+1))
+                    return cur+1;
                 s=cur+1;
+            }
+            else
+                n=cur-1;
             cur=((n-s)>>1)+s;
         }
-        return isBadVersion(n)?n:n+1;
     }
 };
