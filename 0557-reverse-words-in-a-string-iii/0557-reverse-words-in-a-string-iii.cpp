@@ -5,14 +5,13 @@ public:
         int ss=0,ee=s.find(' '),c=0;
         while(ee!=string::npos)
         {
-            for(int i=ee-1;i>=0;--i)
+            for(int i=ee-1;i>=ss;--i)
                 swap(ret[c++],s[i]);
             ret[c++]=' ';
             ss=ee+1;
-            s=s.substr(ss,s.length()-ss);
-            ee=s.find(' ');
+            ee=s.find(' ',ss);
         }
-        for(int i=s.length()-1;i>=0;--i)
+        for(int i=s.length()-1;c<s.length();--i)
             swap(ret[c++],s[i]);
         return ret;
     }
