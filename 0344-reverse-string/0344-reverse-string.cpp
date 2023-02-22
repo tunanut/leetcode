@@ -4,9 +4,9 @@ public:
         int ss=0,ee=s.size()-1;
         while(ss<ee)
         {
-            int tmp=s[ee];
-            s[ee--]=s[ss];
-            s[ss++]=tmp;
+            int tmp=s[ss];
+            s[ss++]=s[ee];
+            s[ee--]=tmp;
         }
     }
 };
