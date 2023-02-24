@@ -1,22 +1,26 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int maxcount=0;
-        int length=s.length()-1;
-        while(maxcount<length||length>=0)
+        int maxlen=0;
+        int length=s.length();
+        for(int i=0;i<length;++i)
         {
             string ss="";
-            ss+=s[length];
-            int i=length-1;
-            for(int i=length-1;i>=0;--i)
+            ss+=s[i];
+            for(int j=i+1;j<length;++j)
             {
-                if(ss.find(s[i])!=string::npos)
+                int idx=ss.find(s[j]);
+                if(idx!=string::npos)
+                {
+                    i+=idx;
                     break;
-                ss+=s[i];
+                }
+                ss+=s[j];
             }
-            length=i;
-            maxcount=max((int)ss.length(),maxcount);
+            maxlen=max((int)ss.length(),maxlen);
+            if(maxlen>=(length-i))
+                break;
         }
-        return maxcount;
+        return maxlen;
     }
 };
