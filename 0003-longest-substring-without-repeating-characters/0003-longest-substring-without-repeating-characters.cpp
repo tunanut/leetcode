@@ -5,21 +5,17 @@ public:
         int length=s.length();
         for(int i=0;i<length;++i)
         {
-            string ss="";
-            ss+=s[i];
+            int c[128]={0,};
+            int n=1;
+            ++c[s[i]];
             for(int j=i+1;j<length;++j)
             {
-                int idx=ss.find(s[j]);
-                if(idx!=string::npos)
-                {
-                    i+=idx;
+                if(c[s[j]])
                     break;
-                }
-                ss+=s[j];
+                ++c[s[j]];
+                ++n;
             }
-            maxlen=max((int)ss.length(),maxlen);
-            if(maxlen>=(length-i))
-                break;
+            maxlen=max(n,maxlen);
         }
         return maxlen;
     }
