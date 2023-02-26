@@ -7,18 +7,18 @@ public:
         int m[26]={0,};
         int n[26]={0,};
         for(int i=0;i<ee;++i)
-            ++m[s1[i]-'a'];
-        for(int i=0;i<e;++i)
         {
-            c=0;
-            memcpy(n,m,sizeof(m));
-            for(int j=i;j<e;++j)
-            {
-                if(n[s2[j]-'a']--==0)
-                    break;
-                if(++c==ee)
-                    return true;
-            }
+            ++m[s1[i]-'a'];
+            ++n[s2[i]-'a'];
+        }
+        if(memcmp(m,n,sizeof(m))==0)
+            return true;
+        for(int i=ee;i<e;++i)
+        {
+            ++n[s2[i]-'a'];
+            --n[s2[i-ee]-'a'];
+            if(memcmp(m,n,sizeof(m))==0)
+                return true;
         }
         return false;
     }
