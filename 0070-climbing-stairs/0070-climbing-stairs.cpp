@@ -1,11 +1,11 @@
 class Solution {
 public:
     int climbStairs(int n) {
-        long long o = 0;
-        long long s = 1;
+        int o = 0;
+        int s = 1;
         while(n-- > 0)
         {
-            long long t = o + s;
+            int t = o + s;
             o = s;
             s = t;
         }
