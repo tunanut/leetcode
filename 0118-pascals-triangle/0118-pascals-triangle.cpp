@@ -12,10 +12,9 @@ public:
         {
             auto* pr = &v[r-1];
             vector<int> a;
-            a.push_back(1);
+            a.resize(pr->size()+1, 1);
             for(int i = 0; i < pr->size() - 1; ++i)
-                a.push_back((*pr)[i] + (*pr)[i+1]);
-            a.push_back(1);
+                a[i+1] = (*pr)[i] + (*pr)[i+1];
             v.push_back(a);
         }
         
