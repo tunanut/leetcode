@@ -1,7 +1,9 @@
 class Solution {
 public:
     bool canPlaceFlowers(vector<int>& flowerbed, int n) {
-        int m = 0;
+        if(!n)
+            return true;
+        
         int lenf = flowerbed.size();
         
         for(int i = 0; i < lenf; ++i)
@@ -17,13 +19,12 @@ public:
                 if(check == 0)
                 {
                     flowerbed[i] = 1;
-                    ++m;
+                    --n;
+                    if(n == 0)
+                        return true;
                 }
             }
         }
-        
-        if(n <= m)
-            return true;
         
         return false;
     }
